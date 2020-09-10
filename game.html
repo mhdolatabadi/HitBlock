@@ -7,13 +7,29 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    <style>
+        #navigator{
+            background-color: red;
+            border-radius: 20px;
+            width: 10%;
+            height: 10px;
+            bottom: 0;
+            position: absolute;
+            margin-bottom: 5%;
+            margin-right: 5%;
+        }
+    </style>
 </head>
 <body>
-    <style>
-        
-    </style>
-    <script>
+    <div id="navigator">
 
+    </div>
+    
+    <script>
+        const navigator = document.getElementById("navigator")
+        document.addEventListener("mousemove", (e) => {
+            navigator.style.left = `${e.clientX}px`
+        })
     </script>
     
 </body>
