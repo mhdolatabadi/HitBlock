@@ -91,6 +91,9 @@ document.addEventListener("click", () => {
       if(getMeNumber(ball.style.left) > document.documentElement.scrollWidth - 2 * ball.offsetHeight){
           dX = -1
       }
+      if(getMeNumber(ball.style.bottom) < 0){
+          alert("GAME OVER!")
+      }
       backBall(block1)
       backBall(block2)
       backBall(block3)
