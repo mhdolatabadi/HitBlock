@@ -48,6 +48,8 @@ function setPosition(a){
 document.addEventListener("mousemove", (e) => {
   navigator.style.left = `${e.clientX - navigator.offsetWidth / 2}px`;
   navigator.style.bottom = "5px";
+  navigator.style.width = `100px`
+  navigator.style.height = `10px`
   setPosition(block1)
   setPosition(block2)
   setPosition(block3)
@@ -75,9 +77,11 @@ document.addEventListener("click", () => {
       ) {
         dY = -1;
       }
-      if (ball.style.bottom == navigator.style.bottom) {
+      if ((getMeNumber(ball.style.bottom) == getMeNumber(navigator.style.bottom) + getMeNumber(navigator.style.height)) && (getMeNumber(navigator.style.left) < getMeNumber(ball.style.left)) && (getMeNumber(ball.style.left) < (getMeNumber(navigator.style.left) + getMeNumber(navigator.style.width)))) {
         dY = 1;
         ball.style.left = navigator.style.left;
+      } else{
+          alert("GAME OVER!")
       }
       backBall(block1)
       backBall(block2)
