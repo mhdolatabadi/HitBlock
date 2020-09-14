@@ -36,6 +36,7 @@
     position: absolute;
     visibility: visible;
     border-radius: 20px;
+    margin: 50px;
 }
 #block2{
     bottom: 700px;
@@ -46,6 +47,7 @@
     position: absolute;
     visibility: visible;
     border-radius: 20px;
+    margin: 50px;
 }
 #block3{
     bottom: 700px;
@@ -56,6 +58,7 @@
     position: absolute;
     visibility: visible;
     border-radius: 20px;
+    margin: 50px;
 }
 #block4{
     bottom: 700px;
@@ -66,4 +69,5 @@
     left: 450px;
     visibility: visible;
     border-radius: 20px;
+    margin: 50px;
 }

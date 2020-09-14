@@ -1,5 +1,6 @@
 let isClicked = false;
 let dY = 1;
+let dX = 1;
 const block1 = document.getElementById("block1");
 const block2 = document.getElementById("block2");
 const block3 = document.getElementById("block3");
@@ -19,9 +20,7 @@ function isOk(a){
     if(
         getMeNumber(ball.style.left) > getMeNumber(a.style.left) &&
         getMeNumber(ball.style.bottom) >
-          getMeNumber(a.style.bottom) -
-            getMeNumber(a.style.height) -
-            getMeNumber(ball.style.height) &&
+          getMeNumber(a.style.bottom) &&
         !isBroke(a) &&
         getMeNumber(ball.style.left) <
           getMeNumber(a.style.left) + getMeNumber(a.style.width)
@@ -66,22 +65,31 @@ function ballMove(e) {
 document.addEventListener("mousemove", ballMove);
 document.addEventListener("click", () => {
   document.removeEventListener("mousemove", ballMove);
-  let position = +ball.style.top;
+  let YPosition = getMeNumber(ball.style.top);
+  let XPosition = getMeNumber(ball.style.left);
   if (!isClicked) {
     setInterval(() => {
-      position += dY;
-      ball.style.bottom = `${position}px`;
+      YPosition += dY;
+      XPosition += dX;
+      ball.style.bottom = `${YPosition}px`;
+      ball.style.left = `${XPosition}px`
       if (
         getMeNumber(ball.style.bottom) >
         document.documentElement.scrollHeight - 2 * ball.offsetWidth
       ) {
         dY = -1;
+        
       }
       if ((getMeNumber(ball.style.bottom) == getMeNumber(navigator.style.bottom) + getMeNumber(navigator.style.height)) && (getMeNumber(navigator.style.left) < getMeNumber(ball.style.left)) && (getMeNumber(ball.style.left) < (getMeNumber(navigator.style.left) + getMeNumber(navigator.style.width)))) {
         dY = 1;
+        
         ball.style.left = navigator.style.left;
-      } else{
-          alert("GAME OVER!")
+      } 
+      if(getMeNumber(ball.style.left) < 0){
+          dX = 1;
+      }
+      if(getMeNumber(ball.style.left) > document.documentElement.scrollWidth - 2 * ball.offsetHeight){
+          dX = -1
       }
       backBall(block1)
       backBall(block2)
