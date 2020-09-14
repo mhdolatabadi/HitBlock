@@ -32,6 +32,7 @@
     background-color: lawngreen;
     width: 100px;
     height: 20px;
+    left: 0px;
     position: absolute;
     visibility: visible;
     border-radius: 20px;
