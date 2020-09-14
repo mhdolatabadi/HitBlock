@@ -1,6 +1,7 @@
 let isClicked = false;
 let dY = 1;
 let dX = 0;
+let score = 0;
 const block1 = document.getElementById("block1");
 const block2 = document.getElementById("block2");
 const block3 = document.getElementById("block3");
@@ -15,6 +16,12 @@ const block11 = document.getElementById("block11");
 const block12 = document.getElementById("block12");
 const pane = document.getElementById("pane");
 const navigator = document.getElementById("navigator");
+const scoreHTML = document.getElementById("score")
+
+
+function updateScore(){
+    scoreHTML.innerHTML = "Score: " + score;
+}
 function getMeNumber(a) {
   return Number(a.slice(0, a.indexOf("p")));
 }
@@ -43,6 +50,7 @@ function isOk(a){
 function backBall(a){
     if (isOk(a)) {
         a.style.visibility = "hidden";
+        score += 200
         dY = -1;
       }
 }
@@ -90,6 +98,7 @@ document.addEventListener("click", () => {
   let XPosition = getMeNumber(ball.style.left);
   if (!isClicked) {
     setInterval(() => {
+        updateScore()
       YPosition += dY;
       XPosition += dX;
       ball.style.bottom = `${YPosition}px`;
