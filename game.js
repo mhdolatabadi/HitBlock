@@ -1,6 +1,6 @@
 let isClicked = false;
 let dY = 1;
-let dX = 1;
+let dX = 0;
 const block1 = document.getElementById("block1");
 const block2 = document.getElementById("block2");
 const block3 = document.getElementById("block3");
@@ -41,9 +41,7 @@ function isOk(a){
     
 }
 function backBall(a){
-    if (
-        isOk(a)
-      ) {
+    if (isOk(a)) {
         a.style.visibility = "hidden";
         dY = -1;
       }
@@ -105,7 +103,11 @@ document.addEventListener("click", () => {
       }
       if ((getMeNumber(ball.style.bottom) == getMeNumber(navigator.style.bottom) + getMeNumber(navigator.style.height)) && (getMeNumber(navigator.style.left) < getMeNumber(ball.style.left)) && (getMeNumber(ball.style.left) < (getMeNumber(navigator.style.left) + getMeNumber(navigator.style.width)))) {
         dY = 1;
-        
+        if(getMeNumber(ball.style.left) < getMeNumber(navigator.style.left) + getMeNumber(navigator.style.width) / 2)
+            dX = -1
+            else{
+                dX = 1
+            }
         ball.style.left = navigator.style.left;
       } 
       if(getMeNumber(ball.style.left) < 0){
